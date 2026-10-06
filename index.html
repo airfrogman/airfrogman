@@ -1,258 +1,43 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Lightroom brewer preset</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .ambient-glow {
-            position: fixed;
-            top: 25%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 340px;
-            height: 340px;
-            background: radial-gradient(circle, rgba(49, 168, 255, 0.14) 0%, rgba(0, 0, 0, 0) 75%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .dl-button {
-            position: relative;
-            display: inline-block;
-            transition: opacity 0.2s ease, transform 0.15s ease;
-        }
-
-        .dl-button:active {
-            opacity: 0.5;
-            transform: scale(0.97);
-        }
-
-        .dl-button::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -3px;
-            left: 50%;
-            background-color: #ffffff;
-            transition: all 0.25s ease;
-            transform: translateX(-50%);
-        }
-
-        @media (hover: hover) {
-            .dl-button:hover::after {
-                width: 100%;
-            }
-            .dl-button:hover {
-                opacity: 0.85;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lightroom brewer preset</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center px-6 py-12 relative overflow-x-hidden selection:bg-cyan-600 selection:text-white">
+<body>
 
-    <div class="ambient-glow"></div>
-
-    <!-- Main Content Container -->
-    <main class="w-full max-w-sm mx-auto my-auto flex flex-col items-center justify-center text-center z-10 space-y-14 py-4">
-        
-        <!-- Header & Lightroom Icon -->
-        <div class="flex flex-col items-center space-y-6">
-            <h1 class="text-xl md:text-2xl font-light tracking-wide text-gray-200 leading-snug">
-                Lightroom<br>brewer preset
-            </h1>
-
-            <div class="w-16 h-16 bg-[#001E36] border-2 border-[#31A8FF] rounded-2xl flex items-center justify-center shadow-lg shadow-blue-950/40 select-none">
-                <span class="text-[#31A8FF] font-bold text-2xl tracking-tighter">Lr</span>
-            </div>
-        </div>
-
-        <!-- Download Buttons -->
-        <div class="flex flex-col items-center space-y-10 w-full">
-            
-            <!-- PC Section -->
-            <div class="flex flex-col items-center space-y-2">
-                <span class="text-xs text-gray-400 font-light tracking-widest uppercase">pc</span>
-                <button 
-                    id="btn-pc"
-                    type="button"
-                    class="dl-button text-base md:text-lg font-normal text-white py-2 px-6 cursor-pointer focus:outline-none">
-                    download here
-                </button>
-            </div>
-
-            <!-- Mobile Section -->
-            <div class="flex flex-col items-center space-y-2">
-                <span class="text-xs text-gray-400 font-light tracking-widest uppercase">mobile</span>
-                <a 
-                    href="https://xgf.nu/ax714" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="dl-button text-base md:text-lg font-normal text-white py-2 px-別 cursor-pointer focus:outline-none inline-block">
-                    download here
-                </a>
-            </div>
-
-        </div>
-
-        <!-- Instruction Link -->
-        <div class="pt-6 flex flex-col items-center space-y-2 text-xs md:text-sm font-light text-gray-400">
-            <p>ダウンロード方法はこちらから</p>
-            <a 
-                href="https://www.curbon.jp/pages/lightroom" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="text-gray-300 hover:text-white underline underline-offset-4 decoration-neutral-700 hover:decoration-white transition-colors duration-200 break-all">
-                https://www.curbon.jp/pages/lightroom
-            </a>
-        </div>
-
-    </main>
-
-    <!-- Admin / DNG Embedding Button (Bottom-Right) -->
-    <div class="fixed bottom-4 right-4 z-20">
-        <button 
-            onclick="openAdminModal()" 
-            class="text-neutral-600 hover:text-neutral-400 p-2 text-xs rounded-full transition-colors flex items-center space-x-1" 
-            title="DNGファイルの埋め込み設定">
-            <i class="fa-solid fa-gear"></i>
-        </button>
+  <main class="container">
+    <div class="header">
+      <h1>Lightroom<br>brewer preset</h1>
+      <div class="lr-icon">Lr</div>
     </div>
 
-    <!-- Hidden File Input for Real DNG Upload -->
-    <input type="file" id="dng-file-input" accept=".dng" class="hidden" onchange="onDngFileSelected(event)">
+    <!-- PC Section -->
+    <section class="download-section">
+      <h2>pc</h2>
+      <button id="pcDownloadBtn" class="download-btn">download here</button>
+    </section>
 
-    <!-- Mobile Download & Guidance Modal -->
-    <div id="mobile-guide-modal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4">
-        <div class="bg-neutral-950 border border-neutral-800 rounded-3xl w-full max-w-sm p-6 text-left shadow-2xl space-y-5">
-            <div class="flex items-center justify-between pb-2 border-b border-neutral-900">
-                <div class="flex items-center space-x-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
-                    <h3 class="text-white text-base font-medium">brewer プリセット</h3>
-                </div>
-                <button onclick="closeModal('mobile-guide-modal')" class="text-neutral-400 hover:text-white p-1 text-sm">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
+    <!-- Mobile Section -->
+    <section class="download-section">
+      <h2>mobile</h2>
+      <a href="https://xgf.nu/ax714" target="_blank" rel="noopener noreferrer" class="download-btn-link">download here</a>
+    </section>
 
-            <!-- Status Indicator -->
-            <div id="dng-ready-badge" class="p-3 bg-neutral-900 rounded-xl border border-neutral-800 text-xs flex items-center justify-between">
-                <span class="text-neutral-300 flex items-center space-x-2">
-                    <i class="fa-solid fa-file-arrow-down text-cyan-400"></i>
-                    <span id="dng-filename-label">brewer.dng</span>
-                </span>
-                <span id="dng-status-text" class="text-[10px] text-cyan-400 bg-cyan-950/60 border border-cyan-800/50 px-2 py-0.5 rounded-full">準備完了</span>
-            </div>
+    <!-- Footer Guide -->
+    <footer class="guide-footer">
+      <p class="guide-title">ダウンロード方法はこちらから</p>
+      <a href="https://www.curbon.jp/pages/lightroom" target="_blank" rel="noopener noreferrer" class="guide-link">
+        https://www.curbon.jp/pages/lightroom
+      </a>
+    </footer>
+  </main>
 
-            <!-- Action Buttons for Mobile -->
-            <div class="flex flex-col space-y-2.5 pt-1">
-                <button 
-                    id="btn-download-dng"
-                    onclick="triggerDngDownload()"
-                    class="w-full py-3.5 px-4 bg-white hover:bg-neutral-200 text-black font-medium text-sm rounded-xl transition flex items-center justify-center space-x-2 shadow-lg">
-                    <i class="fa-solid fa-arrow-down"></i>
-                    <span>DNGファイルを保存する</span>
-                </button>
-
-                <button 
-                    id="btn-share-dng"
-                    onclick="shareDngToLightroom()"
-                    class="w-full py-3 px-4 bg-neutral-900 hover:bg-neutral-800 text-cyan-400 border border-neutral-800 font-normal text-sm rounded-xl transition flex items-center justify-center space-x-2">
-                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
-                    <span>共有（直接Lightroomへ送る）</span>
-                </button>
-
-                <button 
-                    onclick="downloadXmpPreset()"
-                    class="w-full py-2.5 px-4 bg-transparent text-neutral-400 hover:text-white text-xs rounded-xl transition flex items-center justify-center space-x-1.5">
-                    <i class="fa-solid fa-file-code"></i>
-                    <span>XMP形式で直接インポートする場合はこちら</span>
-                </button>
-            </div>
-
-            <!-- Step by step instructions -->
-            <div class="text-[11px] text-neutral-400 leading-relaxed space-y-2 pt-2 border-t border-neutral-900">
-                <p class="font-medium text-neutral-300">📱 スマホでの登録手順：</p>
-                <div class="space-y-1 text-neutral-400 pl-1">
-                    <p><b>【方法1: DNG写真から登録】</b><br>
-                    1. 上のボタンで保存（iPhoneは「ファイル」等へ）<br>
-                    2. Lightroomで保存した写真を追加<br>
-                    3. 写真を開き「...」メニューから「<b>プリセットを作成</b>」</p>
-                    
-                    <p class="pt-1"><b>【方法2: XMP直接インポート (最新)】</b><br>
-                    1. XMPをダウンロード<br>
-                    2. Lightroomのプリセット一覧上部の「...」→「<b>プリセットをインポート</b>」でXMPを選択</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DNG Embedding / Site Admin Modal -->
-    <div id="admin-modal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4">
-        <div class="bg-neutral-950 border border-neutral-800 rounded-3xl w-full max-w-sm p-6 text-left shadow-2xl space-y-4">
-            <div class="flex items-center justify-between pb-2 border-b border-neutral-900">
-                <h3 class="text-white text-sm font-semibold">本物のDNGファイル埋め込み設定</h3>
-                <button onclick="closeModal('admin-modal')" class="text-neutral-400 hover:text-white p-1">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            
-            <p class="text-xs text-neutral-300 leading-relaxed">
-                Lightroomで書き出した<b>本物の <code>brewer.dng</code></b> を選択すると、このページ内に直接記憶され、スマホで白飛びせず正常に読み込めるようになります。
-            </p>
-
-            <div 
-                onclick="document.getElementById('dng-file-input').click()" 
-                class="border-2 border-dashed border-neutral-700 hover:border-cyan-400 rounded-xl p-6 text-center cursor-pointer transition-colors bg-neutral-900/50">
-                <i class="fa-solid fa-file-circle-plus text-2xl text-cyan-400 mb-2"></i>
-                <p class="text-xs text-white font-medium">本物の brewer.dng を選択</p>
-                <p class="text-[10px] text-neutral-400 mt-1">Lightroomから「書き出し ＞ DNG」したファイル</p>
-            </div>
-
-            <div id="admin-file-info" class="text-xs text-neutral-400">
-                サーバー設置時：このHTMLと同じフォルダに <code>brewer.dng</code> を置くだけでもOKです。
-            </div>
-
-            <div class="pt-2">
-                <button 
-                    onclick="closeModal('admin-modal')" 
-                    class="w-full py-2.5 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl text-xs font-medium transition">
-                    閉じる
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="hidden fixed bottom-10 left-1/2 -translate-x-1/2 bg-neutral-900 border border-neutral-700 text-white px-5 py-3 rounded-2xl shadow-2xl z-50 flex items-center space-x-3 text-xs md:text-sm">
-        <i class="fa-solid fa-circle-check text-cyan-400 text-base"></i>
-        <span id="toast-message">メッセージ</span>
-    </div>
-
-    <script>
-        // Exact XMP preset string supplied by user
-        const XMP_PRESET_STRING = `<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 7.0-c000 1.000000, 0000/00/00-00:00:00        ">
+  <script>
+    // PC用 XMPデータ
+    const XMP_CONTENT = `<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 7.0-c000 1.000000, 0000/00/00-00:00:00        ">
  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about=""
     xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/"
@@ -373,177 +158,28 @@
      <rdf:li xml:lang="x-default">brewer</rdf:li>
     </rdf:Alt>
    </crs:Name>
-   <crs:ShortName>
-    <rdf:Alt>
-     <rdf:li xml:lang="x-default"/>
-    </rdf:Alt>
-   </crs:ShortName>
-   <crs:SortName>
-    <rdf:Alt>
-     <rdf:li xml:lang="x-default"/>
-    </rdf:Alt>
-   </crs:SortName>
    <crs:Group>
     <rdf:Alt>
      <rdf:li xml:lang="x-default">ユーザープリセット</rdf:li>
     </rdf:Alt>
    </crs:Group>
-   <crs:Description>
-    <rdf:Alt>
-     <rdf:li xml:lang="x-default"/>
-    </rdf:Alt>
-   </crs:Description>
-   <crs:ToneCurvePV2012>
-    <rdf:Seq>
-     <rdf:li>0, 0</rdf:li>
-     <rdf:li>47, 39</rdf:li>
-     <rdf:li>133, 111</rdf:li>
-     <rdf:li>186, 192</rdf:li>
-     <rdf:li>255, 255</rdf:li>
-    </rdf:Seq>
-   </crs:ToneCurvePV2012>
-   <crs:ToneCurvePV2012Red>
-    <rdf:Seq>
-     <rdf:li>0, 0</rdf:li>
-     <rdf:li>255, 255</rdf:li>
-    </rdf:Seq>
-   </crs:ToneCurvePV2012Red>
-   <crs:ToneCurvePV2012Green>
-    <rdf:Seq>
-     <rdf:li>0, 0</rdf:li>
-     <rdf:li>255, 255</rdf:li>
-    </rdf:Seq>
-   </crs:ToneCurvePV2012Green>
-   <crs:ToneCurvePV2012Blue>
-    <rdf:Seq>
-     <rdf:li>0, 0</rdf:li>
-     <rdf:li>255, 255</rdf:li>
-    </rdf:Seq>
-   </crs:ToneCurvePV2012Blue>
-   <crs:PointColors>
-    <rdf:Seq>
-     <rdf:li>-1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000</rdf:li>
-    </rdf:Seq>
-   </crs:PointColors>
-   <crs:ColorVariance>
-    <rdf:Seq>
-     <rdf:li>-50.000000</rdf:li>
-    </rdf:Seq>
-   </crs:ColorVariance>
-   <crs:FilterList rdf:parseType="Resource">
-    <crs:Filters>
-     <rdf:Seq>
-      <rdf:li
-       crs:Name="Enhance"
-       crs:Title="$$$/CRaw/Filter/Title/Denoise=Denoise"
-       crs:FilterID="1"
-       crs:MinDisplayVersion="285212672"
-       crs:MinEditVersion="285212672"
-       crs:OrderIndexN="100000"
-       crs:OrderIndexD="1"
-       crs:SrcBoundsTop="0"
-       crs:SrcBoundsLeft="0"
-       crs:SrcBoundsBottom="4168"
-       crs:SrcBoundsRight="6252"
-       crs:DstBoundsTop="0"
-       crs:DstBoundsLeft="0"
-       crs:DstBoundsBottom="4168"
-       crs:DstBoundsRight="6252"
-       crs:SrcDefaultCropAreaTop="0"
-       crs:SrcDefaultCropAreaLeft="0"
-       crs:SrcDefaultCropAreaBottom="4160"
-       crs:SrcDefaultCropAreaRight="6240"
-       crs:DstDefaultCropAreaTop="0"
-       crs:DstDefaultCropAreaLeft="0"
-       crs:DstDefaultCropAreaBottom="4160"
-       crs:DstDefaultCropAreaRight="6240"
-       crs:ShouldDeleteImagesDueToUpstream="true"
-       crs:CompressedSettings="CE24832710980B8D3374578C774F8535"/>
-     </rdf:Seq>
-    </crs:Filters>
-   </crs:FilterList>
-   <crs:Look>
-    <rdf:Description
-     crs:Name="Adobe Color"
-     crs:Amount="1"
-     crs:UUID="B952C231111CD8E0ECCF14B86BAA7077"
-     crs:SupportsAmount="false"
-     crs:SupportsMonochrome="false"
-     crs:SupportsOutputReferred="false"
-     crs:Stubbed="true">
-    <crs:Group>
-     <rdf:Alt>
-      <rdf:li xml:lang="x-default">Profiles</rdf:li>
-     </rdf:Alt>
-    </crs:Group>
-    </rdf:Description>
-   </crs:Look>
   </rdf:Description>
  </rdf:RDF>
 </x:xmpmeta>`;
 
-        // Storage key for embedded authentic DNG
-        const DNG_STORAGE_KEY = 'brewer_preset_dng_base64';
-        let authenticDngBlob = null;
+    // PCボタンクリックイベント
+    document.getElementById('pcDownloadBtn').addEventListener('click', () => {
+      const blob = new Blob([XMP_CONTENT], { type: 'application/xml' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'brewer.xmp';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  </script>
 
-        // Try restoring authentic DNG from localStorage if previously embedded
-        try {
-            const cachedDngBase64 = localStorage.getItem(DNG_STORAGE_KEY);
-            if (cachedDngBase64) {
-                const byteCharacters = atob(cachedDngBase64.split(',')[1] || cachedDngBase64);
-                const byteNumbers = new Array(byteCharacters.length);
-                for (let i = 0; i < byteCharacters.length; i++) {
-                    byteNumbers[i] = byteCharacters.charCodeAt(i);
-                }
-                const byteArray = new Uint8Array(byteNumbers);
-                authenticDngBlob = new Blob([byteArray], { type: 'image/dng' });
-                updateStatusDisplay(true, '埋め込み済み');
-            }
-        } catch (e) {
-            console.log('Restoring stored preset status:', e);
-        }
-
-        /**
-         * Download helper
-         */
-        function triggerDownload(blob, filename) {
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            setTimeout(() => {
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            }, 1000);
-        }
-
-        /**
-         * PC Download: Save brewer.xmp
-         */
-        function downloadXmpPreset() {
-            const blob = new Blob([XMP_PRESET_STRING], { type: 'application/xml;charset=utf-8' });
-            triggerDownload(blob, 'brewer.xmp');
-            showToast('brewer.xmp を保存しました');
-        }
-
-        document.getElementById('btn-pc').addEventListener('click', (e) => {
-            e.preventDefault();
-            downloadXmpPreset();
-        });
-
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            if (!toast) return;
-            const toastMsg = document.getElementById('toast-message');
-            if (toastMsg) toastMsg.textContent = msg;
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3200);
-        }
-    </script>
 </body>
 </html>
